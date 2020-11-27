@@ -1,14 +1,13 @@
 import Dependencies._
+import sbt._
 
 ThisBuild / scalaVersion := "2.13.3"
 ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / organization := "com.example"
-ThisBuild / organizationName := "example"
 
 lazy val root = (project in file("."))
   .settings(
     name := "zio-sample",
-    libraryDependencies ++= dependencies,
+    libraryDependencies ++= dependencies ++ plugins,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
@@ -27,4 +26,7 @@ lazy val dependencies =
   Flyway.all ++
   Testing.all
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+lazy val plugins = Seq(
+  compilerPlugin("io.tryp"    % "splain"              % "0.5.7" cross CrossVersion.patch), // https://github.com/tek/splain
+  compilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1")                           // これがないとcompileできない(implicit0のところ)
+)
