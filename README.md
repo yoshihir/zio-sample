@@ -3,8 +3,7 @@
 
 ## memo
 ### どこまで作業したか
-- healthを動かそうとしている
-- Server.scalaの赤を解決したい
+- health check routesまで動作確認
 
 
 ### 後で試すもの
