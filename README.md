@@ -4,7 +4,9 @@
 ## memo
 ### どこまで作業したか
 - health check routesまで動作確認
-
+- Dependenciesで色々消してみる。zio-streamとmacro
+- refined系のgithub(https://github.com/fthomas/refined)
+- curl http://localhost:9000/health/alive
 
 ### 後で試すもの
 - buildEnvとlogEnvで環境変数を根こそぎ撮ってきているがこの処理が必要なのか消してみて動作確認する
