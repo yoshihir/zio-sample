@@ -3,13 +3,14 @@
 
 ## memo
 ### どこまで作業したか
-- health check routesまで動作確認
-- Dependenciesで色々消してみる。zio-streamとmacro
+- Dependenciesで色々消してみる。zio-streamとmacro -> 済
 - refined系のgithub(https://github.com/fthomas/refined)
-- curl http://localhost:9000/health/alive
+- curl http://localhost:9000/health/alive まで動作確認
+
+
 
 ### 後で試すもの
-- buildEnvとlogEnvで環境変数を根こそぎ撮ってきているがこの処理が必要なのか消してみて動作確認する
+- buildEnvとlogEnvで環境変数を根こそぎ撮ってきているがこの処理が必要なのか消してみて動作確認する -> 消して動いた
 - configでReqResConfigは使っているのか。使っていないんだったら消す
 - dbは一旦posgreで作り、後でmysqlに置き換えてみる
 - configのpackageのimport文で使っていないのを消したらどうなるか確認する

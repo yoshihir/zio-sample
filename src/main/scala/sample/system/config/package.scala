@@ -52,20 +52,9 @@ package object config {
     private val basePath = "sample"
     private val source   = ConfigSource.default.at(basePath)
 
-    private val buildEnv: Task[String] =
-      Task.effect {
-        System
-          .getenv()
-          .asScala
-          .map(v => s"${v._1} = ${v._2}")
-          .mkString("\n", "\n", "")
-      }
-
     private def logEnv(ex: Throwable): ZIO[Logging, Throwable, Unit] =
       for {
-        env <- buildEnv
-        _   <- log.error(s"Loading configuration failed with the following environment variables: $env.")
-        _   <- log.error(s"Error thrown was $ex.")
+        _ <- log.error(s"Error thrown was $ex.")
       } yield ()
 
     val live: ZLayer[Logging, Throwable, Config] = ZLayer.fromEffectMany(
