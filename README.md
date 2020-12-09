@@ -6,8 +6,8 @@
 - Dependenciesで色々消してみる。zio-streamとmacro -> 済
 - refined系のgithub(https://github.com/fthomas/refined)
 - curl http://localhost:9000/health/alive まで動作確認
-
-
+- ReqResClientHTTPは外部APIを叩いていている(実際は自分たちのサービスだと思うがマイクロサービスを意識しているんだろう)
+- createUserのclientを除いてcreateできるようにする
 
 ### 後で試すもの
 - buildEnvとlogEnvで環境変数を根こそぎ撮ってきているがこの処理が必要なのか消してみて動作確認する -> 消して動いた
