@@ -12,7 +12,7 @@ package object user {
 
   object UserService {
     trait Service {
-      def createUser(user: User): RIO[UserPersistence with Clock, User]
+      def createUser(user: User): RIO[UserPersistence, User]
       def getUser(userId: UserId): RIO[UserPersistence, User]
       def deleteUser(userId: UserId): RIO[UserPersistence, Unit]
     }
@@ -20,7 +20,7 @@ package object user {
     val live: ULayer[UserService] =
       ZLayer.succeed(
         new UserService.Service {
-          override def createUser(user: User): RIO[UserPersistence with Clock, User] =
+          override def createUser(user: User): RIO[UserPersistence, User] =
             UserPersistence.create(user)
 
           override def getUser(userId: UserId): RIO[UserPersistence, User] =
@@ -38,7 +38,7 @@ package object user {
         }
       )
 
-    def createUser(user: User): RIO[UserService with UserPersistence with Clock, User] =
+    def createUser(user: User): RIO[UserService with UserPersistence, User] =
       RIO.accessM(_.get.createUser(user))
 
     def getUser(userId: UserId): RIO[UserService with UserPersistence, User] =
